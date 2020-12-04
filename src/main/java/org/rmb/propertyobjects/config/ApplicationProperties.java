@@ -12,8 +12,6 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "application")
 @Data
 public class ApplicationProperties {
-
    private Map<String, Brand> mapOfBrands;
    private List<Brand> listOfBrands;
-
 }
