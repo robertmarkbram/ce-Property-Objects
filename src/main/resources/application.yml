@@ -1,0 +1,27 @@
+debug: false
+
+spring:
+  application:
+    name: ce-Property-Objects
+  main:
+    web-application-type: none
+      
+application:
+  map-of-brands:
+    first:
+      id: 012
+      name: Hopes and Dreams
+      date-created: "2020-12-04T11:41:00.000+10:00"
+    second:
+      id: 013
+      name: Space and Rainbows
+      date-created: "2019-10-14T10:41:12.000+10:00"
+  list-of-brands:
+    -
+      id: 014
+      name: Pancakes and Snowglobles
+      date-created: "2010-11-01T01:43:00.000+10:00"
+    -
+      id: 020
+      name: Green and Read
+      date-created: "1984-02-15T11:11:20.000+10:00"
