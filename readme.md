@@ -135,3 +135,58 @@ test {
     useJUnitPlatform()
 }
 ```
+
+## Spring Boot Class
+
+Spring Boot class.
+
+```java
+package org.rmb.propertyobjects;
+
+import lombok.extern.slf4j.Slf4j;
+import org.rmb.propertyobjects.config.ApplicationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@Slf4j
+public class CodingExercisePropertyObjectsApplication implements CommandLineRunner {
+
+   private ApplicationProperties applicationProperties;
+
+   @Autowired
+   public CodingExercisePropertyObjectsApplication(
+         final ApplicationProperties applicationProperties) {
+      this.applicationProperties = applicationProperties;
+   }
+
+   public static void main(String[] args) {
+      SpringApplication.run(CodingExercisePropertyObjectsApplication.class, args).close();
+   }
+
+   @java.lang.Override
+   public void run(final java.lang.String... args) throws Exception {
+      log.info("Map of brands");
+      applicationProperties.getMapOfBrands().forEach((key, brand) -> {
+         log.info("   Key: {}, value: {}", key, brand);
+      });
+      log.info("List of brands");
+      applicationProperties.getListOfBrands().forEach((brand) -> {
+         log.info("   Brand: {}", brand);
+      });
+   }
+}
+```
+
+Output from running this (modified to remove logging chaff):
+
+```
+Map of brands
+   Key: first, value: Brand(id=10, name=Hopes and Dreams, dateCreated=2020-12-04T11:41+10:00)
+   Key: second, value: Brand(id=11, name=Space and Rainbows, dateCreated=2019-10-14T10:41:12+10:00)
+List of brands
+   Brand: Brand(id=12, name=Pancakes and Snowglobles, dateCreated=2010-11-01T01:43+10:00)
+   Brand: Brand(id=16, name=Green and Read, dateCreated=1984-02-15T11:11:20+10:00)
+```
